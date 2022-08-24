@@ -9,11 +9,12 @@ class GetAllActionsRemoteDatasourceImp implements GetAllActionsDatasource {
   GetAllActionsRemoteDatasourceImp(this._dio);
 
   @override
-  Future<List<InvestEntity>> getAllActions(int id) async {
+  Future<List<InvestEntity>> getAllActions() async {
     List<InvestEntity> actions = [];
     try {
       final response =
           await _dio.get("https://api-cotacao-b3.labdo.it/api/empresa");
+          print(response.data);
 
       actions = List.from(
         response.data.map((action) {

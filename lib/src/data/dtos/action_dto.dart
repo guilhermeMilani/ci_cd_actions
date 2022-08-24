@@ -1,34 +1,35 @@
+import 'package:flutter_application_1/src/domain/entities/invest_entity.dart';
 
-class ActionsDto {
-  final int id;
-  final String cdAcaoRdz;
-  final String nmEmpresa;
-  final String setorEconomico;
-  final String subsetor;
-  final String segmento;
-  final String segmentoB3;
-  final String nmSegmentoB3;
-  final String cdAcao;
-  final String txCnpj;
-  final String vlCnpj;
-  final String createdAt;
-  final String updatedAt;
-
+class ActionsDto extends InvestEntity {
   ActionsDto({
-    required this.id,
-    required this.cdAcaoRdz,
-    required this.nmEmpresa,
-    required this.setorEconomico,
-    required this.subsetor,
-    required this.segmento,
-    required this.segmentoB3,
-    required this.nmSegmentoB3,
-    required this.cdAcao,
-    required this.txCnpj,
-    required this.vlCnpj,
-    required this.createdAt,
-    required this.updatedAt,
-  });
+    required int id,
+    required String cdAcaoRdz,
+    required String nmEmpresa,
+    required String setorEconomico,
+    required String subsetor,
+    required String segmento,
+    required String segmentoB3,
+    required String nmSegmentoB3,
+    required String cdAcao,
+    required String txCnpj,
+    required String vlCnpj,
+    required String createdAt,
+    required String updatedAt,
+  }) : super(
+          id: id,
+          cdAcaoRdz: cdAcaoRdz,
+          nmEmpresa: nmEmpresa,
+          setorEconomico: setorEconomico,
+          subsetor: subsetor,
+          segmento: segmento,
+          segmentoB3: segmentoB3,
+          nmSegmentoB3: nmSegmentoB3,
+          cdAcao: cdAcao,
+          txCnpj: txCnpj,
+          createdAt: createdAt,
+          updatedAt: updatedAt,
+          vlCnpj: vlCnpj,
+        );
 
   factory ActionsDto.fromMap(Map<String, dynamic> map) {
     return ActionsDto(

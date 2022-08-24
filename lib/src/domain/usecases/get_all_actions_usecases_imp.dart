@@ -6,7 +6,7 @@ class GetAllActionsUsecasesImp implements GetAllActionsUsecases {
   final GetAllActionsRepository _repository;
   GetAllActionsUsecasesImp(this._repository);
   @override
-  Future<List<InvestEntity>> getAllActions(int id) async {
-    return await getAllActions(id);    
+  Future<List<InvestEntity>> getAllActions() async {
+    return await _repository.getAllActions();    
   }
 }

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../riverpod/action_provider.dart';
 import 'widgets/menu_list.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends HookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stocksActions = ref.watch(actionsNotifierProvider);
     return Scaffold(
       backgroundColor: Colors.grey.shade800,
       body: CustomScrollView(
@@ -85,8 +83,21 @@ class _HomePageState extends State<HomePage> {
                 const Divider(
                   color: Colors.black,
                 ),
-
-                
+                Visibility(
+                  replacement: const SizedBox(),
+                  visible: stocksActions.isNotEmpty,
+                  child: SizedBox(
+                    height: 900,
+                    child: ListView.builder(
+                      itemCount: stocksActions.length,
+                      itemBuilder: (context, index) {
+                        return Text(
+                          stocksActions[index].id.toString(),
+                        );
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

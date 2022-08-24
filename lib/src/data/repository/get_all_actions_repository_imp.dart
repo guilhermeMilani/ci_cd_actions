@@ -9,8 +9,8 @@ class GetAllActionsRepositoryImp implements GetAllActionsRepository {
   
 
   @override
-  Future<List<InvestEntity>> getAllActions(int id) async{
-    return await _datasources.getAllActions(id);
+  Future<List<InvestEntity>> getAllActions() async{
+    return await _datasources.getAllActions();
   }
   
 }

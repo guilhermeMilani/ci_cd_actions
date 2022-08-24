@@ -7,11 +7,11 @@ class ActionNotifier extends  StateNotifier<List<InvestEntity>>{
   final GetAllActionsUsecases _usecase;
 
   ActionNotifier(this._usecase) : super([]){    
-    getAllActions(1);
+    getAllActions();
   }
 
-  Future<void>getAllActions(int id) async{
-    state = await _usecase.getAllActions(id);
+  Future<void>getAllActions() async{
+    state = await _usecase.getAllActions();
   }
   
 }
