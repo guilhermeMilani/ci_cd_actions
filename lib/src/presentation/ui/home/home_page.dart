@@ -23,9 +23,35 @@ class HomePage extends HookConsumerWidget {
             stretch: true,
             expandedHeight: 400,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "images/FundoHomePage.png",
-                fit: BoxFit.fill,
+              background: Stack(
+                children: [
+                  SizedBox(
+                    width: 1000,
+                    height: 500,
+                    child: Image.asset(
+                      "images/FundoHomePage.png",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 200, left:15),
+                    child: Text(
+                          "Patrimônio",
+                          style:
+                              TextStyle(color: Colors.white),
+                        ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 220,left: 15),
+                    child: Text(
+                      "R\$ 0,00",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -104,13 +130,13 @@ class HomePage extends HookConsumerWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(15),
                             child: Padding(
                               padding: const EdgeInsets.only(right: 10),
                               child: Image.network(
-                          "https://legislacaoemercados.capitalaberto.com.br/wp-content/uploads/2020/09/CVM-quer-aumentar-transpar%C3%AAncia-do-aluguel-de-a%C3%A7%C3%B5es-01.png",
-                          scale: 2,
-                        ),
+                                "https://legislacaoemercados.capitalaberto.com.br/wp-content/uploads/2020/09/CVM-quer-aumentar-transpar%C3%AAncia-do-aluguel-de-a%C3%A7%C3%B5es-01.png",
+                                scale: 2,
+                              ),
                             ));
                       },
                     ),
