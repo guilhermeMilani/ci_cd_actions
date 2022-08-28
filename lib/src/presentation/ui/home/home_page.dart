@@ -10,6 +10,9 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stocksActions = ref.watch(actionsNotifierProvider);
+    bool showMoney = true;
+    
+
     return Scaffold(
       backgroundColor: Colors.grey.shade800,
       body: CustomScrollView(
@@ -31,24 +34,64 @@ class HomePage extends HookConsumerWidget {
                     child: Image.asset(
                       "images/FundoHomePage.png",
                       fit: BoxFit.fill,
+                      color: Colors.white.withOpacity(0.4),
+                      colorBlendMode: BlendMode.modulate,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 200, left:15),
-                    child: Text(
+                  Padding(
+                    padding:  const EdgeInsets.only(left: 15, top: 200),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
                           "Patrimônio",
-                          style:
-                              TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white),
                         ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 220,left: 15),
-                    child: Text(
-                      "R\$ 0,00",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.white),
+                        Row(
+                          children: const [
+                            Text(
+                              "R\$ 0,00",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                  color: Colors.white),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          "Rendimento",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        const Text(
+                          "+R\$ 0,00",
+                          style: TextStyle(fontSize: 25, color: Colors.white),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        GestureDetector(
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundColor: Colors.grey.shade800,
+                            child: Icon(
+                              showMoney == false
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.white,
+                            ),
+                          ),
+                          onTap: () {
+                            
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ],
