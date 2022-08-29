@@ -4,15 +4,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../riverpod/action_provider.dart';
 import 'widgets/menu_list.dart';
 
+final showMoneyProvider = StateProvider((ref) => true,);
+
 class HomePage extends HookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stocksActions = ref.watch(actionsNotifierProvider);
-    bool showMoney = true;
+    final showMoney = ref.watch(showMoneyProvider.state).state;
     
-
     return Scaffold(
       backgroundColor: Colors.grey.shade800,
       body: CustomScrollView(
@@ -88,7 +89,8 @@ class HomePage extends HookConsumerWidget {
                             ),
                           ),
                           onTap: () {
-                            
+                         
+                              ref.read(showMoneyProvider.state).state = !showMoney ;                         
                           },
                         ),
                       ],
